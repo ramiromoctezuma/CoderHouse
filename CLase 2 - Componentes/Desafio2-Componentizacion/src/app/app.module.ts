@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { PruebaComponent } from './prueba/prueba.component';
-import { MensajeComponent } from './componentes/mensaje/mensaje.component';
-import { SinTestComponent } from './componentes/sin-test/sin-test.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { StudentsComponent } from './components/students/students.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PruebaComponent,
-    MensajeComponent,
-    SinTestComponent
+    ToolbarComponent,
+    NavbarComponent,
+    StudentsComponent
   ],
   imports: [
     BrowserModule
