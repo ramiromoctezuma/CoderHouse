@@ -1,0 +1,42 @@
+<table mat-table [dataSource]="dataSource">
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matColumnDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <!-- Columna Comisión -->
+    <ng-container matColumnDef="comision">
+        <th mat-header-cell *matHeaderCellDef>Comisión</th>
+        <td mat-cell *matColumnDef="let element">{{ element.comision }}</td>
+    </ng-container>
+
+    <!-- Columna Prefesor -->
+    <ng-container matColumnDef="profesor">
+        <th mat-header-cell *matHeaderCellDef>Profesor</th>
+        <td mat-cell *matColumnDef="let element">{{ element.profesor }}</td>
+    </ng-container>
+    
+    <!-- Columna Número de estudiantes -->
+    <ng-container matColumnDef="numeroEstudiantes">
+        <th mat-header-cell *matHeaderCellDef>Número de estudientes</th>
+        <td mat-cell *matColumnDef="let element">{{ element.numeroEstudiantes }}</td>
+    </ng-container>
+
+    <!-- Columna Matrícua abierta -->
+    <ng-container matColumnDef="matriculaAbierta">
+        <th mat-header-cell *matHeaderCellDef>Matricula Abierta</th>
+        <td mat-cell *matColumnDef="let element">{{ element.matriculaAbierta }}</td>
+    </ng-container>
+
+    <!-- Columna Matrícua abierta -->
+    <ng-container matColumnDef="matriculaAbierta">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <button mat-icon-button><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button>Eliminar</button>
+    </ng-container>
+
+    <!-- <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matHeaderRowDef="let row; columns: columnas;"></tr> -->
+    
+</table>

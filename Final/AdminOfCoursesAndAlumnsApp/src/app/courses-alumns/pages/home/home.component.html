@@ -1,0 +1,112 @@
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+            <span>Menú</span>
+            <span class="spacer"></span>
+            <button mat-icon-button
+                    (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>menu_open</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a routerLink="listempresa"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon mat-list-icon>business</mat-icon>
+                <span>Empresas</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listrancho"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>agriculture</mat-icon>
+                <span>Ranchos</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listdepartamento"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>next_week</mat-icon>
+                <span>Departamentos</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listpuesto"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>assignment_ind</mat-icon>
+                <span>Puestos</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listpersona"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>engineering</mat-icon>
+                <span>Empleados</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listusuario"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>people</mat-icon>
+                <span>Usuarios</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listactividad"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>format_list_bulleted</mat-icon>
+                <span>Actividades</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listprioridad"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>low_priority</mat-icon>
+                <span>Prioridades</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listperiodicidad"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>date_range</mat-icon>
+                <span>Peridiocidades</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a routerLink="listestadoactividad"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon  mat-list-icon>rule</mat-icon>
+                <span>Estados de Actividad</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-toolbar color="primary">
+        <button mat-icon-button
+                (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="spacer"></span>
+
+        <button mat-button
+                (click)="logout()">
+            <mat-icon>logout</mat-icon> Salir
+        </button>
+    </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-sidenav-container>
