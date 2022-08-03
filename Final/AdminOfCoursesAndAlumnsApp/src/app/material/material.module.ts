@@ -4,6 +4,13 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
+import { MatTableModule } from "@angular/material/table";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 
 
 import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
@@ -13,7 +20,14 @@ import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
         MatSidenavModule,
         MatToolbarModule,
         MatIconModule,
-        MatListModule
+        MatListModule,
+        MatTableModule,
+        MatGridListModule,
+        MatProgressSpinnerModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatButtonModule,
+        MatCardModule
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'es-MX' }

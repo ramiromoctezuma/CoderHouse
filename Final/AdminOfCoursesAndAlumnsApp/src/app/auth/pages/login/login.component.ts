@@ -11,8 +11,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   myForm: FormGroup = this.fb.group({
-    email   : ['', [Validators.required]],
-    password: ['', [Validators.minLength(8)]]
+    email   : ['email', [Validators.required]],
+    password: ['12345678', [Validators.minLength(8)]]
   });
 
   constructor( private router: Router,
@@ -22,9 +22,8 @@ export class LoginComponent {
   login(){
     this.authService.login()
                     .subscribe(resp => {
-                      console.log(resp);
                       if(resp.id){
-                        this.router.navigate(['/'])
+                        this.router.navigate(['/coursesalumns'])
                       }
                     })
   }

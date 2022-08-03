@@ -6,13 +6,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CoursesalumnsRoutingModule } from './coursesalumns-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import { DesafiosComponent } from './pages/desafios/desafios.component';
 
 
 
 @NgModule({
   declarations: [
     UserListComponent,
-    HomeComponent
+    HomeComponent,
+    ConfirmComponent,
+    DesafiosComponent,
   ],
   imports: [
     CommonModule,

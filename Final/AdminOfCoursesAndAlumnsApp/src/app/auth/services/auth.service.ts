@@ -19,7 +19,7 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     verifyAuthentication(): Observable<boolean>{
-      console.log('Token', localStorage.getItem('token'));
+      console.log('LocalStorage verify auth: ', localStorage.getItem('token'));
       
       if ( !localStorage.getItem('token')) {
         return of(false);
@@ -43,6 +43,6 @@ export class AuthService {
 
     logout(){
       this._auth = undefined;
-      localStorage.clear;
+      localStorage.clear();
     }
 }

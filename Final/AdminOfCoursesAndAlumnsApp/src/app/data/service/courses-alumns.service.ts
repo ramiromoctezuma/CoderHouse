@@ -32,8 +32,8 @@ export class CoursesAlumnsService {
       return this.http.get<User>(`${this.baseUrl}/users/${idUser}`);
     }
 
-    editUser(idUser: number): Observable<User>{
-      return this.http.put<User>(`${this.baseUrl}/users`, idUser);
+    editUser(user: User): Observable<User>{
+      return this.http.put<User>(`${this.baseUrl}/users/${user.id}`, user);
     }
 
     deleteUser(idUser: number): Observable<User[]>{

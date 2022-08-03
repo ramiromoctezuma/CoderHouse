@@ -5,5 +5,5 @@ export interface User {
     address:  string;
     phone:    number;
     profile:  string;
-    idUser:   number;
+    id:   number;
 }

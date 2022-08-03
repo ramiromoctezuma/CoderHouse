@@ -1,0 +1,17 @@
+<h1>¿Está seguro/a?</h1>
+<hr>
+<p>
+    Está a punto de borrar el registro <b>{{data.name}}</b> de forma definitiva.
+    <br>
+    ¿Desea continuar?
+</p>
+<div>
+    <button mat-button color="warn"
+    (click)="delete()">
+        Si, borrar
+    </button>
+    <button mat-button style="margin-left:10px;" 
+    (click)="close()">
+        Cancelar
+    </button>
+</div>
