@@ -5,7 +5,9 @@ import { NgModule                         } from '@angular/core';
 
 import { DirectivaPersonalizadaDirective  } from './pages/desafios/directivas/directiva-personalizada.directive';
 import { CoursesalumnsRoutingModule       } from './coursesalumns-routing.module';
+import { StudentEditDialogComponent       } from './pages/student/student-edit-dialog/student-edit-dialog.component';
 import { UserEditDialogComponent          } from './pages/user/user-edit-dialog/user-edit-dialog.component';
+import { StudentListComponent             } from './pages/student/student-list/student-list.component';
 import { DesafiosComponent                } from './pages/desafios/desafios.component';
 import { UserListComponent                } from './pages/user/user-list/user-list.component';
 import { ConfirmComponent                 } from './components/confirm/confirm.component';
@@ -17,10 +19,12 @@ import { HomeComponent                    } from './pages/home/home.component';
   declarations: [
     DirectivaPersonalizadaDirective,
     UserEditDialogComponent,
-    ConfirmComponent,
+    StudentListComponent,
     DesafiosComponent,
     UserListComponent,
+    ConfirmComponent,
     HomeComponent,
+    StudentEditDialogComponent,
   ],
   imports: [
     CoursesalumnsRoutingModule,

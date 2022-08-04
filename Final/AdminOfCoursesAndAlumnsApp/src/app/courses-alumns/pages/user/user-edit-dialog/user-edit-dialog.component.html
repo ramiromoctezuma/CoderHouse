@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Modificar Usuario</h1>
+<h1 mat-dialog-title *ngIf="movType==='add'">Registrar Usuario</h1>
+<h1 mat-dialog-title *ngIf="movType==='edit'">Modificar Usuario</h1>
 <div mat-dialog-content>
     <form [formGroup]="formulario">
         <mat-form-field appearance="fill">

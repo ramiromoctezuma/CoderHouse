@@ -56,7 +56,7 @@ export class CoursesAlumnsService {
     return this.http.put<Student>(`${this.baseUrl}/alumns/${student.id}`, student);
   }
 
-  deleteStudent(idStudent: number): Observable<Student[]>{
+  deleteStudent(idStudent: string): Observable<Student[]>{
     return this.http.delete<Student[]>(`${this.baseUrl}/alumns/${idStudent}`);
   }
 //#endregion
