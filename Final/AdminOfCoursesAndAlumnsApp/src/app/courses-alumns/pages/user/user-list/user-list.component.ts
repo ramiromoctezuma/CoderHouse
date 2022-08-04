@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit    } from '@angular/core';
+  
+import { MatTableDataSource   } from '@angular/material/table';
+import { MatDialog            } from '@angular/material/dialog';
+
 import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
-import { User } from '../../../model/user';
-import { ConfirmComponent } from '../../../components/confirm/confirm.component';
-import { Model } from 'src/app/courses-alumns/model/model.interface';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent     } from '../../../components/confirm/confirm.component';
+import { MatSnackBar          } from '@angular/material/snack-bar';
+import { Model                } from 'src/app/courses-alumns/model/model.interface';
+import { User                 } from '../../../model/user';
+import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -41,13 +44,34 @@ export class UserListComponent implements OnInit {
                               })
   }
 
+  addUser(){
+    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+      width: '280px',
+      data: null
+    });
+    dialogRef.afterClosed().subscribe(
+      (res) => {
+        if (res) {
+          this.getUsers();
+          this.showSnackbar(`El usuario se ha registrado correctamente.`);
+        }
+      }
+    )
+  }
+
   edit(user: User){
-    this.coursesalumnsservices.editUser(user)
-                              .subscribe( usuario => {
-                                if (usuario != null) {
-                                  this.getUsers();
-                                }
-                              } )
+    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+      width: '280px',
+      data: user
+    });
+    dialogRef.afterClosed().subscribe(
+      (res) => {
+        if (res) {
+          this.getUsers();
+          this.showSnackbar(`La información de ${user.name} ha sido actualizada.`);
+        }
+      }
+    )
   }
 
   delete(user: User){
@@ -55,19 +79,13 @@ export class UserListComponent implements OnInit {
       width: '280px',
       data: this.model
     })
-    
-    
     dialog.afterClosed().subscribe(
       (res) => {
         if (res) {
           this.coursesalumnsservices.deleteUser(user.id)
           .subscribe( usuarios => {
+            this.getUsers();
             this.showSnackbar(`El usuario ${user.name} ha sido eliminado.`);
-            setTimeout(() => {  
-              if (usuarios != null) {
-                window.location.reload();
-              }
-             }, 2500);
           } )
         }
       }

@@ -1,18 +1,21 @@
-.grid-container{
-    display: grid;
-    grid-template-areas: 
-    'header header  header  header  header  header'
-    'menu   main   main     main    main    main';
+mat-card { margin: 10px; padding: 10px;}
+.hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid rgba(255, 255, 255, 0);
 }
 
-.grid-header{
-    grid-area: header;
+/* Desafio 2 */
+.texto-error {
+    color: red;
 }
 
-.grid-menu{
-    grid-area: menu;
+.texto-exito {
+    color: green;
 }
 
-.grid-main{
-    grid-area: main;
+.texto-it {
+    color: rgb(38, 0, 255);
+}
+
+.texto-otro {
+    color: rgb(128, 0, 102);
 }

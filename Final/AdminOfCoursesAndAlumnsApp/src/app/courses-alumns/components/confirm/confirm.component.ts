@@ -9,18 +9,18 @@ import { Model } from '../../model/model.interface';
 })
 export class ConfirmComponent implements OnInit {
 
-  constructor(private dialofRef: MatDialogRef<ConfirmComponent>,
+  constructor(private dialogRef: MatDialogRef<ConfirmComponent>,
                                  @Inject(MAT_DIALOG_DATA) public data: Model) { }
 
   ngOnInit(): void {
   }
 
   delete(){
-    this.dialofRef.close(true);
+    this.dialogRef.close(true);
   }
 
   close(){
-    this.dialofRef.close();
+    this.dialogRef.close();
   }
 
 }

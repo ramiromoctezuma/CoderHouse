@@ -11,6 +11,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 
 import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
@@ -27,7 +29,9 @@ import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
         MatDialogModule,
         MatSnackBarModule,
         MatButtonModule,
-        MatCardModule
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'es-MX' }

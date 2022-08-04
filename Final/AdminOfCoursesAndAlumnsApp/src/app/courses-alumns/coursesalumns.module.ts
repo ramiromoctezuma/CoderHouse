@@ -8,6 +8,8 @@ import { CoursesalumnsRoutingModule } from './coursesalumns-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { DesafiosComponent } from './pages/desafios/desafios.component';
+import { UserEditDialogComponent } from './pages/user/user-edit-dialog/user-edit-dialog.component';
+import { DirectivaPersonalizadaDirective } from './pages/desafios/directivas/directiva-personalizada.directive';
 
 
 
@@ -17,6 +19,8 @@ import { DesafiosComponent } from './pages/desafios/desafios.component';
     HomeComponent,
     ConfirmComponent,
     DesafiosComponent,
+    UserEditDialogComponent,
+    DirectivaPersonalizadaDirective
   ],
   imports: [
     CommonModule,

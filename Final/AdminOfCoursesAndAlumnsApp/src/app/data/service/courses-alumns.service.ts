@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/courses-alumns/model/user';
 import { Observable } from 'rxjs';
+import { Student } from 'src/app/courses-alumns/model/student';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -33,12 +34,36 @@ export class CoursesAlumnsService {
     }
 
     editUser(user: User): Observable<User>{
+      console.log('User: ', user);
+      
       return this.http.put<User>(`${this.baseUrl}/users/${user.id}`, user);
     }
 
     deleteUser(idUser: number): Observable<User[]>{
-      return this.http.delete<User[]>(`${this.baseUrl}/users/${idUser}`);
+      return this.http.delete<User[]>(`${this.baseUrl}/alumns/${idUser}`);
     }
   //#endregion
+
+  //#region     ALUMNOS
+  addStudent(alumn: Student): Observable<Student[]>{
+    return this.http.post<Student[]>(`${this.baseUrl}/alumns`, alumn);
+  }
+
+  getStudents(): Observable<Student[]>{
+    return this.http.get<Student[]>(`${this.baseUrl}/alumns`);
+  }
+
+  getStudentById(idStudent: number): Observable<Student>{
+    return this.http.get<Student>(`${this.baseUrl}/alumns/${idStudent}`);
+  }
+
+  editStudent(student: Student): Observable<Student>{
+    return this.http.put<Student>(`${this.baseUrl}/alumns/${student.id}`, student);
+  }
+
+  deleteStudent(idStudent: number): Observable<Student[]>{
+    return this.http.delete<Student[]>(`${this.baseUrl}/alumns/${idStudent}`);
+  }
+//#endregion
 
 }
