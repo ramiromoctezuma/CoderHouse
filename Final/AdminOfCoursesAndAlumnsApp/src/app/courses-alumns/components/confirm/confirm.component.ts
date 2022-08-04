@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Model } from '../../model/model.interface';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit     } from '@angular/core';
+import { Model                         } from '../../model/model.interface';
 
 @Component({
-  selector: 'app-confirm',
-  templateUrl: './confirm.component.html',
-  styleUrls: ['./confirm.component.css']
+  selector:     'app-confirm',
+  templateUrl:  './confirm.component.html',
+  styleUrls:   ['./confirm.component.css']
 })
 export class ConfirmComponent implements OnInit {
 
@@ -22,5 +22,4 @@ export class ConfirmComponent implements OnInit {
   close(){
     this.dialogRef.close();
   }
-
 }

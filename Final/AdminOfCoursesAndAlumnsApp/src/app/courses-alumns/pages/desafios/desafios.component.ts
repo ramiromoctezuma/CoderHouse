@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Component, OnInit    } from '@angular/core';
+
 import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
-import { User } from '../../model/user';
-import { Student } from 'src/app/courses-alumns/model/student';
+import { AuthService          } from 'src/app/auth/services/auth.service';
+import { Student              } from 'src/app/courses-alumns/model/student';
+import { User                 } from '../../model/user';
 
 @Component({
-  selector: 'app-desafios',
-  templateUrl: './desafios.component.html',
-  styleUrls: ['./desafios.component.css']
+  selector:     'app-desafios',
+  templateUrl:  './desafios.component.html',
+  styleUrls:   ['./desafios.component.css']
 })
 export class DesafiosComponent implements OnInit {
 
@@ -15,13 +16,13 @@ export class DesafiosComponent implements OnInit {
     return this.authservice.auth;
   }
 
-  users: User[] = [];
+  users:    User[] = [];
   students: Student[] = [];
 
   // Desafio 2:
   variable1: number = 5;
 
-  constructor(private authservice: AuthService,
+  constructor(private authservice:          AuthService,
               private coursesAlumnsService: CoursesAlumnsService) { }
 
   ngOnInit(): void {
@@ -47,5 +48,4 @@ export class DesafiosComponent implements OnInit {
           this.students = studentDB;
         })
   }
-
 }

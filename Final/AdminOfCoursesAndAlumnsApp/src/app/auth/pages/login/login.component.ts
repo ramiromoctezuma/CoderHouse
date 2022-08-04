@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { Auth } from '../../interfaces/auth.interfaces';
-import { User } from '../../../courses-alumns/model/user';
+import { Component                          } from '@angular/core';
+import { Router                             } from '@angular/router';
+
+import { AuthService                        } from '../../services/auth.service';
+import { Auth                               } from '../../interfaces/auth.interfaces';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector:     'app-login',
+  templateUrl:  './login.component.html',
+  styleUrls:   ['./login.component.css']
 })
 export class LoginComponent {
 
@@ -19,7 +19,7 @@ export class LoginComponent {
     address:  '',
     phone:    0,
     profile:  '',
-    id:   0
+    id:       0
 
   }
 
@@ -28,9 +28,9 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(4)]]
   });
 
-  constructor( private router: Router,
+  constructor( private router:      Router,
                private authService: AuthService,
-               private fb: FormBuilder) { }
+               private fb:          FormBuilder) { }
   
   validateEmail(campo: string) {
     return this.loginForm.controls[campo].errors
@@ -45,5 +45,4 @@ export class LoginComponent {
   login(){
     this.authService.login(this.loginForm.value)
   }
-
 }

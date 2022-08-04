@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
-import { RegistroComponent } from './pages/registro/registro.component';
+import { NgModule             } from '@angular/core';
+
+import { RegistroComponent    } from './pages/registro/registro.component';
+import { LoginComponent       } from './pages/login/login.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path:     '',
     children: [
       {
-        path: 'login',
+        path:      'login',
         component: LoginComponent
       },
       {
-        path: 'registro',
+        path:      'registro',
         component: RegistroComponent
       },
       {
-        path: '**',
+        path:       '**',
         redirectTo: 'login'
       }
     ]

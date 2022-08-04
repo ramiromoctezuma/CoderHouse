@@ -5,5 +5,5 @@ export interface Auth {
     address:  string;
     phone:    number;
     profile:  string;
-    id:   number;
+    id:       number;
 }

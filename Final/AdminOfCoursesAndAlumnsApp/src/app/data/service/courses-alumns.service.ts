@@ -1,15 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
-import { User } from 'src/app/courses-alumns/model/user';
-import { Observable } from 'rxjs';
-import { Student } from 'src/app/courses-alumns/model/student';
+import { Injectable              } from '@angular/core';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*'
-  })
-};
+import { environment } from 'src/environments/environment';
+import { Observable  } from 'rxjs';
+import { Student     } from 'src/app/courses-alumns/model/student';
+import { User        } from 'src/app/courses-alumns/model/user';
 
 @Injectable({
   providedIn: 'root'

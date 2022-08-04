@@ -1,13 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from 'src/app/courses-alumns/model/user';
-import { CoursesAlumnsService } from '../../../../data/service/courses-alumns.service';
+import { MatDialogRef, MAT_DIALOG_DATA       } from '@angular/material/dialog';
+import { Component, Inject, OnInit           } from '@angular/core';
+
+import { CoursesAlumnsService                } from '../../../../data/service/courses-alumns.service';
+import { User                                } from 'src/app/courses-alumns/model/user';
 
 @Component({
-  selector: 'app-user-edit-dialog',
-  templateUrl: './user-edit-dialog.component.html',
-  styleUrls: ['./user-edit-dialog.component.css']
+  selector:     'app-user-edit-dialog',
+  templateUrl:  './user-edit-dialog.component.html',
+  styleUrls:   ['./user-edit-dialog.component.css']
 })
 export class UserEditDialogComponent implements OnInit {
 
@@ -62,8 +63,5 @@ export class UserEditDialogComponent implements OnInit {
     this.coursesAlumnsService.editUser(this.formulario.value).subscribe(res => {
       this.dialogRef.close(true);
     });
-    
-   
   }
-
 }

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Auth } from '../interfaces/auth.interfaces';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable, of, tap } from 'rxjs';
-import { User } from '../../courses-alumns/model/user';
+import { map, Observable, of  } from 'rxjs';
+import { HttpClient           } from '@angular/common/http';
+import { Injectable           } from '@angular/core';
+import { Router               } from '@angular/router';
+
 import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
-import { getLocaleMonthNames } from '@angular/common';
-import { Router } from '@angular/router';
+import { environment          } from 'src/environments/environment';
+import { Auth                 } from '../interfaces/auth.interfaces';
+import { User                 } from '../../courses-alumns/model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +14,14 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private baseUrl: string = environment.route;
-  private _auth: Auth | undefined;
+  private   _auth: Auth | undefined;
 
   get auth(): Auth{
     return {...this._auth!}
   }
 
-    constructor(private router: Router,
-                private http: HttpClient,
+    constructor(private router:                Router,
+                private http:                  HttpClient,
                 private coursesalumnsservices: CoursesAlumnsService) { }
 
     verifyAuthentication(): Observable<boolean>{
