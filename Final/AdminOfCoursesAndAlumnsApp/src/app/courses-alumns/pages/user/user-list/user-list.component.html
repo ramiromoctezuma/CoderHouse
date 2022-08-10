@@ -8,48 +8,50 @@
     </mat-grid-tile>
 </mat-grid-list>
 <ng-template #divUsuarios>
-    <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-            <!-- Users Colum -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-            </ng-container>
-            <!-- Email Colum -->
-            <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef>Email</th>
-                <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-            </ng-container>
-            <!-- Dirección Colum -->
-            <ng-container matColumnDef="address">
-                <th mat-header-cell *matHeaderCellDef>Dirección</th>
-                <td mat-cell *matCellDef="let element">{{ element.address }}</td>
-            </ng-container>
-            <!-- Teléfono Colum -->
-            <ng-container matColumnDef="phone">
-                <th mat-header-cell *matHeaderCellDef>Teléfono</th>
-                <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
-            </ng-container>
-            <!-- Perfil Colum -->
-            <ng-container matColumnDef="profile">
-                <th mat-header-cell *matHeaderCellDef>Perfil</th>
-                <td mat-cell *matCellDef="let element">{{ element.profile }}</td>
-            </ng-container>
-            <!-- Acciones Colum -->
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef>Acciones</th>
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button (click)="edit(element)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button (click)="delete(element)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </td>
-            </ng-container>
+    <div style="overflow: auto;">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+                <!-- Users Colum -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                </ng-container>
+                <!-- Email Colum -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>Email</th>
+                    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+                </ng-container>
+                <!-- Dirección Colum -->
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef>Dirección</th>
+                    <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+                </ng-container>
+                <!-- Teléfono Colum -->
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+                    <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+                </ng-container>
+                <!-- Perfil Colum -->
+                <ng-container matColumnDef="profile">
+                    <th mat-header-cell *matHeaderCellDef>Perfil</th>
+                    <td mat-cell *matCellDef="let element">{{ element.profile }}</td>
+                </ng-container>
+                <!-- Acciones Colum -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button (click)="edit(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="delete(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
     </div>
 </ng-template>
