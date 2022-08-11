@@ -32,7 +32,7 @@
                 </thead>
                 <tbody appDirectivaPersonalizada>
                     <tr *ngFor="let student of students">
-                        <td [ngClass]="student.name != 'Juan' ? 'texto-error' : 'texto-exito'">{{student.name}}</td>
+                        <td [ngClass]="student.name.firstName != 'Juan' ? 'texto-error' : 'texto-exito'">{{student.name}}</td>
                         <td [ngClass]="student.profile != 'IT' ? 'texto-otro' : 'texto-it'">{{student.profile}}</td>
                         <td>{{student.gender}}</td>
                     </tr>
@@ -45,11 +45,22 @@
     <mat-card> 
         <mat-card-title>Desafio 3</mat-card-title>
         <!-- <mat-card-subtitle>Integrando conocimientos.</mat-card-subtitle> -->
-        <img src="../../../../assets/images/d3.png" width="50%" alt="Desafio 1">
+        <img src="../../../../assets/images/d3.png" width="50%" alt="Desafio 3">
         <br>
         <h2>Favor de revisar el módulo del login..</h2>
         <mat-card-actions align="end">
             <button mat-raised-button color="primary" (click)="gotToURL('http://localhost:4200/auth/login')">IR</button>
+        </mat-card-actions>
+    </mat-card>
+    <!-- Desafio 4 -->
+    <mat-card> 
+        <mat-card-title>Desafio 4</mat-card-title>
+        <!-- <mat-card-subtitle>Integrando conocimientos.</mat-card-subtitle> -->
+        <img src="../../../../assets/images/d4_1.jpg" width="50%" alt="Desafio 4">
+        <img src="../../../../assets/images/d4_2.jpg" width="50%" alt="Desafio 4">
+        <br>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="gotToURL('https://github.com/ramiromoctezuma/CoderHouse/tree/main/Final/AdminOfCoursesAndAlumnsApp')">IR</button>
         </mat-card-actions>
     </mat-card>
     <hr class="hr">

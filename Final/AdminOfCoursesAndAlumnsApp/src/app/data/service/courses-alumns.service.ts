@@ -35,13 +35,22 @@ export class CoursesAlumnsService {
     }
 
     deleteUser(idUser: number): Observable<User[]>{
-      return this.http.delete<User[]>(`${this.baseUrl}/alumns/${idUser}`);
+      return this.http.delete<User[]>(`${this.baseUrl}/users/${idUser}`);
     }
   //#endregion
 
   //#region     ALUMNOS
-  addStudent(alumn: Student): Observable<Student[]>{
-    return this.http.post<Student[]>(`${this.baseUrl}/alumns`, alumn);
+  addStudent(student: any): Observable<Student[]>{
+    let studentM: Student = {
+      name:    {
+        firstName: student.firstName,
+        lastName: student.lastName
+      },
+      profile: student.profile,
+      gender:  student.gender,
+      id:      student.id
+    }
+    return this.http.post<Student[]>(`${this.baseUrl}/alumns`, studentM);
   }
 
   getStudents(): Observable<Student[]>{
@@ -52,8 +61,18 @@ export class CoursesAlumnsService {
     return this.http.get<Student>(`${this.baseUrl}/alumns/${idStudent}`);
   }
 
-  editStudent(student: Student): Observable<Student>{
-    return this.http.put<Student>(`${this.baseUrl}/alumns/${student.id}`, student);
+  editStudent(student: any): Observable<Student>{
+    
+    let studentM: Student = {
+      name:    {
+        firstName: student.firstName,
+        lastName: student.lastName
+      },
+      profile: student.profile,
+      gender:  student.gender,
+      id:      student.id
+    } 
+    return this.http.put<Student>(`${this.baseUrl}/alumns/${student.id}`, studentM);
   }
 
   deleteStudent(idStudent: string): Observable<Student[]>{

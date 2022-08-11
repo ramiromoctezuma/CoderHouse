@@ -13,6 +13,8 @@ import { UserListComponent                } from './pages/user/user-list/user-li
 import { ConfirmComponent                 } from './components/confirm/confirm.component';
 import { MaterialModule                   } from '../material/material.module';
 import { HomeComponent                    } from './pages/home/home.component';
+import { NamesPipe } from './pipes/names.pipe';
+import { FontSizeDirective } from './directives/font-size.directive';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { HomeComponent                    } from './pages/home/home.component';
     ConfirmComponent,
     HomeComponent,
     StudentEditDialogComponent,
+    NamesPipe,
+    FontSizeDirective,
   ],
   imports: [
     CoursesalumnsRoutingModule,

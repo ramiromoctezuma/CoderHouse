@@ -21,6 +21,8 @@ export class StudentListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'profile', 'gender', 'actions'];
 
+  fullName : {} = {};
+
   model: Model = {
     name: ''
   }
@@ -35,7 +37,6 @@ export class StudentListComponent implements OnInit {
     this.getStudents();
   }
 
-    
   getStudents(){
     this.coursesalumnsservices.getStudents()
                               .subscribe( students => {
@@ -100,5 +101,4 @@ export class StudentListComponent implements OnInit {
       }
     });
   }
-
 }

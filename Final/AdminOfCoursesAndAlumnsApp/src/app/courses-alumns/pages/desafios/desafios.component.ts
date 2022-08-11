@@ -26,7 +26,6 @@ export class DesafiosComponent implements OnInit {
               private coursesAlumnsService: CoursesAlumnsService) { }
 
   ngOnInit(): void {
-    console.log("Estudiantes: ", this.students);
     this.getUsers();
     this.getStudents(); // Coment this line to try the ngIf directive
   }

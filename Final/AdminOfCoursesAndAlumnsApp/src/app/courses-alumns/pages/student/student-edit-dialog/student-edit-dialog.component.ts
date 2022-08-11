@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/courses-alumns/model/student';
 import { CoursesAlumnsService } from '../../../../data/service/courses-alumns.service';
+import { Name } from '../../../model/student';
 
 @Component({
   selector: 'app-student-edit-dialog',
@@ -22,7 +23,8 @@ export class StudentEditDialogComponent implements OnInit {
     if (data === null) {
       this.movType = 'add';
       this.formulario = fb.group({
-        name:     '',
+        firstName: '',
+        lastName: '',
         profile:  '',
         gender:    '',
         id:       '',
@@ -30,7 +32,8 @@ export class StudentEditDialogComponent implements OnInit {
     } else {
       this.movType = 'edit';
       this.formulario = fb.group({
-        name:     new FormControl(data.name),
+        firstName:     new FormControl(data.name.firstName),
+        lastName:     new FormControl(data.name.lastName),
         profile:  new FormControl(data.profile),
         gender:    new FormControl(data.gender),
         id:       new FormControl(data.id),

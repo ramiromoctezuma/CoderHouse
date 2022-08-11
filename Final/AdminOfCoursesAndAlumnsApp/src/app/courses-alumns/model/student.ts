@@ -1,6 +1,11 @@
 export interface Student {
-    name:    string;
+    name:    Name;
     profile: string;
     gender:  string;
     id:      string;
+}
+
+export interface Name {
+    firstName: string;
+    lastName:  string;
 }
