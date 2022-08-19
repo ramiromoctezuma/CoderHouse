@@ -63,5 +63,18 @@
             <button mat-raised-button color="primary" (click)="gotToURL('https://github.com/ramiromoctezuma/CoderHouse/tree/main/Final/AdminOfCoursesAndAlumnsApp')">IR</button>
         </mat-card-actions>
     </mat-card>
+    <!-- Desafio 5 -->
+    <mat-card> 
+        <mat-card-title>Desafio 5</mat-card-title>
+        <!-- <mat-card-subtitle>Integrando conocimientos.</mat-card-subtitle> -->
+        <img src="../../../../assets/images/d5.jpg" width="50%" alt="Desafio 5">
+        <br>
+        <pre>{{ student$ | async | json }}</pre>
+
+        <button mat-raised-button color="primary" (click)='tryPromise()'>Probar Promise</button>
+        <mat-card-actions align="end">
+            <!-- <button mat-raised-button color="primary" (click)="gotToURL('https://github.com/ramiromoctezuma/CoderHouse/tree/main/Final/AdminOfCoursesAndAlumnsApp')">IR</button> -->
+        </mat-card-actions>
+    </mat-card>
     <hr class="hr">
 </div>

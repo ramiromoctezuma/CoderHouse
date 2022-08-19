@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable              } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
-import { Observable  } from 'rxjs';
+import { Observable, of  } from 'rxjs';
 import { Student     } from 'src/app/courses-alumns/model/student';
 import { User        } from 'src/app/courses-alumns/model/user';
 
@@ -64,7 +64,7 @@ export class CoursesAlumnsService {
   editStudent(student: any): Observable<Student>{
     
     let studentM: Student = {
-      name:    {
+      name: {
         firstName: student.firstName,
         lastName: student.lastName
       },
@@ -78,6 +78,19 @@ export class CoursesAlumnsService {
   deleteStudent(idStudent: string): Observable<Student[]>{
     return this.http.delete<Student[]>(`${this.baseUrl}/alumns/${idStudent}`);
   }
-//#endregion
 
+  // Desafio 5
+  getStudentsPromise(users: User[]){
+    return new Promise((resolve, reject) => {
+      if (users.length > 0) {
+        resolve(users);
+      }else{
+        reject({
+          codigo: 0,
+          mensaje: 'No hay usuarios en este objeto.'
+        })
+      }
+    })
+  }
+//#endregion
 }

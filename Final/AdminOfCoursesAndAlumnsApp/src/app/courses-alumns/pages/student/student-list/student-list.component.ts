@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Model } from 'src/app/courses-alumns/model/model.interface';
@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { StudentEditDialogComponent } from '../student-edit-dialog/student-edit-dialog.component';
 import { Student } from 'src/app/courses-alumns/model/student';
 import { ConfirmComponent } from 'src/app/courses-alumns/components/confirm/confirm.component';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-student-list',
@@ -20,12 +21,10 @@ import { ConfirmComponent } from 'src/app/courses-alumns/components/confirm/conf
 export class StudentListComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'profile', 'gender', 'actions'];
-
   fullName : {} = {};
-
   model: Model = {
     name: ''
-  }
+  };
   
   dataSource:any;
 
@@ -41,7 +40,8 @@ export class StudentListComponent implements OnInit {
     this.coursesalumnsservices.getStudents()
                               .subscribe( students => {
                                 this.dataSource = new MatTableDataSource( students );
-                              })
+                              });
+    
   }
 
   addStudent(){
