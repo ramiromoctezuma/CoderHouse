@@ -6,7 +6,7 @@ import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.servic
 import { MatTableDataSource } from '@angular/material/table';
 import { StudentEditDialogComponent } from '../student-edit-dialog/student-edit-dialog.component';
 import { Student } from 'src/app/courses-alumns/model/student';
-import { ConfirmComponent } from 'src/app/courses-alumns/components/confirm/confirm.component';
+import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
 import { Subscription, Observable } from 'rxjs';
 
 @Component({

@@ -4,7 +4,7 @@ import { MatTableDataSource   } from '@angular/material/table';
 import { MatDialog            } from '@angular/material/dialog';
 
 import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
-import { ConfirmComponent     } from '../../../components/confirm/confirm.component';
+import { ConfirmComponent     } from 'src/app/shared/confirm/confirm.component';
 import { MatSnackBar          } from '@angular/material/snack-bar';
 import { Model                } from 'src/app/courses-alumns/model/model.interface';
 import { User                 } from '../../../model/user';

@@ -1,9 +1,8 @@
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA       } from '@angular/material/dialog';
-import { Component, Inject, OnInit           } from '@angular/core';
-
-import { CoursesAlumnsService                } from '../../../../data/service/courses-alumns.service';
-import { User                                } from 'src/app/courses-alumns/model/user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA      } from '@angular/material/dialog';
+import { Component, Inject, OnInit          } from '@angular/core';
+import { CoursesAlumnsService               } from '../../../../data/service/courses-alumns.service';
+import { User                               } from 'src/app/courses-alumns/model/user';
 
 @Component({
   selector:     'app-user-edit-dialog',
@@ -12,8 +11,16 @@ import { User                                } from 'src/app/courses-alumns/mode
 })
 export class UserEditDialogComponent implements OnInit {
 
-  formulario: FormGroup;
   movType: string = '';
+
+  formulario: FormGroup = this.fb.group({
+    email   : ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(4)]],
+    name:     ['', [Validators.required, Validators.minLength(2)]],
+    address:  ['', [Validators.required, Validators.minLength(2)]],
+    phone:    ['', [Validators.required, Validators.minLength(10)]],
+    profile:  ['', [Validators.required, Validators.minLength(2)]]
+  });
 
   constructor(private fb: FormBuilder,
               private dialogRef: MatDialogRef<UserEditDialogComponent>,
@@ -22,35 +29,25 @@ export class UserEditDialogComponent implements OnInit {
   ) { 
     if (data === null) {
       this.movType = 'add';
-      this.formulario = fb.group({
-        email:    '',
-        password: '',
-        name:     '',
-        address:  '',
-        phone:    '',
-        profile:  '',
-        id:       '',
-      })
     } else {
       this.movType = 'edit';
       this.formulario = fb.group({
-        email:    new FormControl(data.email),
-        password: new FormControl(data.password),
-        name:     new FormControl(data.name),
-        address:  new FormControl(data.address),
-        phone:    new FormControl(data.phone),
-        profile:  new FormControl(data.profile),
-        id:       new FormControl(data.id),
+        email:    [data.email,    [Validators.required, Validators.email]],
+        password: [data.password, [Validators.required, Validators.minLength(4)]],
+        name:     [data.name,     [Validators.required, Validators.minLength(4)]],
+        address:  [data.address,  [Validators.required, Validators.minLength(2)]],
+        phone:    [data.phone,    [Validators.required, Validators.minLength(10)]],
+        profile:  [data.profile,  [Validators.required, Validators.minLength(2)]],
+        id:       [data.id,       []]
       })
     }
-    
   }
-
   ngOnInit(): void {
   }
 
-  close(){
-    this.dialogRef.close();
+  validateField(campo: string) {
+    return this.formulario.controls[campo].errors
+        && this.formulario.controls[campo].touched
   }
 
   addUser(){
@@ -63,5 +60,9 @@ export class UserEditDialogComponent implements OnInit {
     this.coursesAlumnsService.editUser(this.formulario.value).subscribe(res => {
       this.dialogRef.close(true);
     });
+  }
+
+  close(){
+    this.dialogRef.close();
   }
 }

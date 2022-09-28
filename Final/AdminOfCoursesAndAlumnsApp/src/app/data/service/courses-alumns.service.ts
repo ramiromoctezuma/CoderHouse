@@ -1,16 +1,16 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable              } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
-import { Observable, of  } from 'rxjs';
+import { Observable  } from 'rxjs';
 import { Student     } from 'src/app/courses-alumns/model/student';
 import { User        } from 'src/app/courses-alumns/model/user';
+import { Course } from '../../courses-alumns/model/course';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesAlumnsService {
-
   private baseUrl:string = environment.route;
 
   constructor(private http: HttpClient) { }
@@ -29,8 +29,6 @@ export class CoursesAlumnsService {
     }
 
     editUser(user: User): Observable<User>{
-      console.log('User: ', user);
-      
       return this.http.put<User>(`${this.baseUrl}/users/${user.id}`, user);
     }
 
@@ -39,7 +37,7 @@ export class CoursesAlumnsService {
     }
   //#endregion
 
-  //#region     ALUMNOS
+  //#region     ALUMNS
   addStudent(student: any): Observable<Student[]>{
     let studentM: Student = {
       name:    {
@@ -78,19 +76,43 @@ export class CoursesAlumnsService {
   deleteStudent(idStudent: string): Observable<Student[]>{
     return this.http.delete<Student[]>(`${this.baseUrl}/alumns/${idStudent}`);
   }
+//#endregion
 
-  // Desafio 5
-  getStudentsPromise(users: User[]){
-    return new Promise((resolve, reject) => {
-      if (users.length > 0) {
-        resolve(users);
-      }else{
-        reject({
-          codigo: 0,
-          mensaje: 'No hay usuarios en este objeto.'
-        })
-      }
-    })
+  //#region     COURSES
+  addCourse(course: any): Observable<Course[]>{
+    let courseM: Course = {
+      name:           course.lastName,
+      hquantity:      course.hquantity,
+      cquantity:      course.cquantity,
+      assignedtecher: course.assignedtecher,
+      idCourse:       course.idCourse,
+    }
+    return this.http.post<Course[]>(`${this.baseUrl}/courses`, courseM);
+  }
+
+  getCourses(): Observable<Course[]>{
+    return this.http.get<Course[]>(`${this.baseUrl}/courses`);
+  }
+
+  getCourseById(idCourse: number): Observable<Course>{
+    return this.http.get<Course>(`${this.baseUrl}/courses/${idCourse}`);
+  }
+
+  editCourse(course: any): Observable<Course>{
+    
+    let courseM: Course = {
+      name:           course.lastName,
+      hquantity:      course.hquantity,
+      cquantity:      course.cquantity,
+      assignedtecher: course.assignedtecher,
+      idCourse:       course.idCourse,
+    }
+    return this.http.put<Course>(`${this.baseUrl}/courses/${course.id}`, courseM);
+  }
+
+  deleteCourse(idCourse: string): Observable<Course[]>{
+    return this.http.delete<Course[]>(`${this.baseUrl}/courses/${idCourse}`);
   }
 //#endregion
+
 }

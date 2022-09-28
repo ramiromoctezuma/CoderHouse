@@ -6,30 +6,36 @@
             <mat-label>Nombre</mat-label>
             <input formControlName = "name" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('name')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
             <input formControlName = "email" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('email')">Campo obligatorio y debe tener formato de correo.</span>
         <mat-form-field appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input formControlName = "password" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('password')">Campo obligatorio y mínimo 4 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Dirección</mat-label>
             <input formControlName = "address" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('address')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Teléfono</mat-label>
             <input formControlName = "phone" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('phone')">Campo obligatorio y mínimo 10 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Perfil</mat-label>
             <input formControlName = "profile" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('profile')">Campo obligatorio y mínimo 2 caracteres.</span>
     </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="close()">Cerrar</button>
-    <button mat-button (click)="updateUser()" *ngIf="movType==='edit'">Actualizar</button>
-    <button mat-button (click)="addUser()" *ngIf="movType==='add'">Agregar</button>
+    <button mat-button [disabled]="formulario.invalid" (click)="updateUser()" *ngIf="movType==='edit'" >Actualizar</button>
+    <button mat-button [disabled]="formulario.invalid" (click)="addUser()" *ngIf="movType==='add'">Agregar</button>
 </div>
