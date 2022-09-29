@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Model } from 'src/app/courses-alumns/model/model.interface';
-import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
+import { Component, OnInit } from '@angular/core';
+
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+
 import { StudentEditDialogComponent } from '../student-edit-dialog/student-edit-dialog.component';
-import { Student } from 'src/app/courses-alumns/model/student';
+import { CoursesAlumnsService } from 'src/app/data/service/courses-alumns.service';
 import { ConfirmComponent } from 'src/app/shared/confirm/confirm.component';
-import { Subscription, Observable } from 'rxjs';
+import { Student } from 'src/app/courses-alumns/model/student';
+import { Model } from 'src/app/courses-alumns/model/model.interface';
 
 @Component({
   selector: 'app-student-list',
@@ -18,10 +19,9 @@ import { Subscription, Observable } from 'rxjs';
     }`
   ]
 })
-export class StudentListComponent implements OnInit {
 
+export class StudentListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'profile', 'gender', 'actions'];
-  fullName : {} = {};
   model: Model = {
     name: ''
   };
@@ -41,7 +41,6 @@ export class StudentListComponent implements OnInit {
                               .subscribe( students => {
                                 this.dataSource = new MatTableDataSource( students );
                               });
-    
   }
 
   addStudent(){

@@ -1,0 +1,31 @@
+<h1 mat-dialog-title *ngIf="movType==='add'">Registrar Curso</h1>
+<h1 mat-dialog-title *ngIf="movType==='edit'">Modificar Curso</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formulario">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input formControlName = "name" matInput>
+        </mat-form-field>
+        <span *ngIf="validateField('name')">Campo obligatorio y mínimo 1 caracter.</span>
+        <mat-form-field appearance="fill">
+            <mat-label>Número de horas</mat-label>
+            <input formControlName = "hquantity" matInput>
+        </mat-form-field>
+        <span *ngIf="validateField('hquantity')">Campo obligatorio.</span>
+        <mat-form-field appearance="fill">
+            <mat-label>Número de clases</mat-label>
+            <input formControlName = "cquantity" matInput>
+        </mat-form-field>
+        <span *ngIf="validateField('cquantity')">Campo obligatorio.</span>
+        <mat-form-field appearance="fill">
+            <mat-label>Profesor Asignado</mat-label>
+            <input formControlName = "assignedtecher" matInput>
+        </mat-form-field>
+        <span *ngIf="validateField('assignedtecher')">Campo obligatorio y mínimo 2 caracteres.</span>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="close()">Cerrar</button>
+    <button mat-button (click)="updateCourse()" *ngIf="movType==='edit'">Actualizar</button>
+    <button mat-button (click)="addCourse()" *ngIf="movType==='add'">Agregar</button>
+</div>

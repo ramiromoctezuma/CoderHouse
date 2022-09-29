@@ -6,6 +6,7 @@ import { Observable  } from 'rxjs';
 import { Student     } from 'src/app/courses-alumns/model/student';
 import { User        } from 'src/app/courses-alumns/model/user';
 import { Course } from '../../courses-alumns/model/course';
+import { Inscription } from '../../courses-alumns/model/inscription';
 
 @Injectable({
   providedIn: 'root'
@@ -99,7 +100,6 @@ export class CoursesAlumnsService {
   }
 
   editCourse(course: any): Observable<Course>{
-    
     let courseM: Course = {
       name:           course.lastName,
       hquantity:      course.hquantity,
@@ -107,7 +107,7 @@ export class CoursesAlumnsService {
       assignedtecher: course.assignedtecher,
       idCourse:       course.idCourse,
     }
-    return this.http.put<Course>(`${this.baseUrl}/courses/${course.id}`, courseM);
+    return this.http.put<Course>(`${this.baseUrl}/courses/${course.idCourse}`, courseM);
   }
 
   deleteCourse(idCourse: string): Observable<Course[]>{
@@ -115,4 +115,39 @@ export class CoursesAlumnsService {
   }
 //#endregion
 
+//#region     COURSES
+addInscription(course: any): Observable<Inscription[]>{
+  let courseM: Inscription = {
+    idAlmun:          course.idAlmun,
+    idCourse:         course.idCourse,
+    registrationDate: course.registrationDate,
+    idUser:           course.idUser,
+    idInscription:    course.idInscription,
+  }
+  return this.http.post<Inscription[]>(`${this.baseUrl}/inscriptions`, courseM);
+}
+
+getInscriptions(): Observable<Inscription[]>{
+  return this.http.get<Inscription[]>(`${this.baseUrl}/inscriptions`);
+}
+
+getInscriptionById(idInscription: number): Observable<Inscription>{
+  return this.http.get<Inscription>(`${this.baseUrl}/inscriptions/${idInscription}`);
+}
+
+editInscription(course: any): Observable<Inscription>{
+  let courseM: Inscription = {
+    idAlmun:          course.idAlmun,
+    idCourse:         course.idCourse,
+    registrationDate: course.registrationDate,
+    idUser:           course.idUser,
+    idInscription:    course.idInscription,
+  }
+  return this.http.put<Inscription>(`${this.baseUrl}/inscriptions/${course.idInscription}`, courseM);
+}
+
+deleteInscription(idInscription: string): Observable<Inscription[]>{
+  return this.http.delete<Inscription[]>(`${this.baseUrl}/inscriptions/${idInscription}`);
+}
+//#endregion
 }

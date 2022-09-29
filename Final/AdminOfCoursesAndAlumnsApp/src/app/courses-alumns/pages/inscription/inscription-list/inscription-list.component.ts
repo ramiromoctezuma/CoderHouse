@@ -1,80 +1,83 @@
-import { Component, OnInit    } from '@angular/core';
-  
+import { Component, OnInit } from '@angular/core';
+
 import { MatTableDataSource   } from '@angular/material/table';
 import { MatSnackBar          } from '@angular/material/snack-bar';
 import { MatDialog            } from '@angular/material/dialog';
 
-import { UserEditDialogComponent } from '../user-edit-dialog/user-edit-dialog.component';
+import { InscriptionDialogComponent } from '../inscription-dialog/inscription-dialog.component';
 import { CoursesAlumnsService    } from 'src/app/data/service/courses-alumns.service';
 import { ConfirmComponent        } from 'src/app/shared/confirm/confirm.component';
 import { Model                   } from 'src/app/courses-alumns/model/model.interface';
 import { User                    } from '../../../model/user';
+import { Inscription } from '../../../model/inscription';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
+  selector: 'app-inscription-list',
+  templateUrl: './inscription-list.component.html',
   styles: [
     `table {
       width: 100%;
     }`
   ]
 })
-export class UserListComponent implements OnInit {
+export class InscriptionListComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'email', 'address', 'phone', 'profile', 'actions'];
+  movType: string = '';
+
+  displayedColumns: string[] = ['idAlmun', 'idCourse', 'registrationDate', 'idUser', 'actions'];
   
   model: Model = {
     name: ''
   }
 
   dataSource:any;
-
   constructor(private coursesalumnsservices: CoursesAlumnsService,
-              private _snackBar: MatSnackBar,
-              public dialog: MatDialog) { }
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getIncriptions();
   }
 
-  getUsers(){
-    this.coursesalumnsservices.getUsers()
-                              .subscribe( usuarios => {
-                                this.dataSource = new MatTableDataSource( usuarios );
+  
+  getIncriptions(){
+    this.coursesalumnsservices.getInscriptions()
+                              .subscribe( inscriptions => {
+                                this.dataSource = new MatTableDataSource( inscriptions );
                               })
   }
 
-  addUser(){
-    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+  addInscription(){
+    const dialogRef = this.dialog.open(InscriptionDialogComponent, {
       width: '280px',
       data: null
     });
     dialogRef.afterClosed().subscribe(
       (res) => {
         if (res) {
-          this.getUsers();
-          this.showSnackbar(`El usuario se ha registrado correctamente.`);
+          this.getIncriptions();
+          this.showSnackbar(`La inscripción se ha registrado correctamente.`);
         }
       }
     )
   }
 
   edit(user: User){
-    const dialogRef = this.dialog.open(UserEditDialogComponent, {
+    const dialogRef = this.dialog.open(InscriptionDialogComponent, {
       width: '280px',
       data: user
     });
     dialogRef.afterClosed().subscribe(
       (res) => {
         if (res) {
-          this.getUsers();
+          this.getIncriptions();
           this.showSnackbar(`La información de ${user.name} ha sido actualizada.`);
         }
       }
     )
   }
 
-  delete(user: User){
+  delete(inscription: Inscription){
     const dialog = this.dialog.open(ConfirmComponent, {
       width: '280px',
       data: this.model
@@ -82,10 +85,10 @@ export class UserListComponent implements OnInit {
     dialog.afterClosed().subscribe(
       (res) => {
         if (res) {
-          this.coursesalumnsservices.deleteUser(user.id)
-          .subscribe( usuarios => {
-            this.getUsers();
-            this.showSnackbar(`El usuario ${user.name} ha sido eliminado.`);
+          this.coursesalumnsservices.deleteInscription(inscription.idInscription)
+          .subscribe( inscriptions => {
+            this.getIncriptions();
+            this.showSnackbar(`El registro ${inscription.idCourse} ha sido eliminado.`);
           } )
         }
       }
@@ -101,4 +104,5 @@ export class UserListComponent implements OnInit {
       }
     });
   }
+
 }
