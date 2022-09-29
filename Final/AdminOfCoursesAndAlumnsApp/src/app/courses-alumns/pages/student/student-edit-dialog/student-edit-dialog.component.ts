@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/courses-alumns/model/student';
 import { CoursesAlumnsService } from '../../../../data/service/courses-alumns.service';
@@ -11,8 +11,15 @@ import { CoursesAlumnsService } from '../../../../data/service/courses-alumns.se
 })
 export class StudentEditDialogComponent implements OnInit {
 
-  formulario: FormGroup;
   movType: string = '';
+
+  formulario: FormGroup = this.fb.group({
+    firstName: ['', [Validators.required, Validators.minLength(2)]],
+    lastName:  ['', [Validators.required, Validators.minLength(2)]],
+    profile:   ['', [Validators.required, Validators.minLength(2)]],
+    gender:    ['', [Validators.required, Validators.minLength(1)]],
+    id:        ['', []],
+  });
 
   constructor(private fb: FormBuilder,
               private dialogRef: MatDialogRef<StudentEditDialogComponent>,
@@ -21,23 +28,16 @@ export class StudentEditDialogComponent implements OnInit {
   {
     if (data === null) {
       this.movType = 'add';
-      this.formulario = fb.group({
-        firstName: '',
-        lastName: '',
-        profile:  '',
-        gender:    '',
-        id:       '',
-      })
     } else {
       this.movType = 'edit';
       this.formulario = fb.group({
-        firstName:     new FormControl(data.name.firstName),
-        lastName:     new FormControl(data.name.lastName),
-        profile:  new FormControl(data.profile),
-        gender:    new FormControl(data.gender),
-        id:       new FormControl(data.id),
+        firstName: [data.name.firstName, [Validators.required, Validators.minLength(2)]],
+        lastName:  [data.name.lastName,  [Validators.required, Validators.minLength(2)]],
+        profile:   [data.profile,        [Validators.required, Validators.minLength(2)]],
+        gender:    [data.gender,         [Validators.required, Validators.minLength(1)]],
+        id:        [data.id,             []]
       })
-    }
+    } 
   }
 
   ngOnInit(): void {

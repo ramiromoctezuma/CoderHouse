@@ -6,22 +6,26 @@
             <mat-label>Nombre</mat-label>
             <input formControlName = "firstName" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('firstName')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Apellidos</mat-label>
             <input formControlName = "lastName" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('lastName')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Perfil</mat-label>
             <input formControlName = "profile" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('profile')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Sexo</mat-label>
             <input formControlName = "gender" matInput>
         </mat-form-field>
+        <span *ngIf="validateField('gender')">Campo obligatorio y mínimo 2 caracteres.</span>
     </form>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="close()">Cerrar</button>
-    <button mat-button (click)="updateStudent()" *ngIf="movType==='edit'">Actualizar</button>
-    <button mat-button (click)="addStudent()" *ngIf="movType==='add'">Agregar</button>
+    <button mat-button [disabled]="formulario.invalid" (click)="updateStudent()" *ngIf="movType==='edit'">Actualizar</button>
+    <button mat-button [disabled]="formulario.invalid" (click)="addStudent()" *ngIf="movType==='add'">Agregar</button>
 </div>
