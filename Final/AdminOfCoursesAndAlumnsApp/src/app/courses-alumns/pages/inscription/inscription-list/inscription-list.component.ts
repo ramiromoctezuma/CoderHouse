@@ -21,29 +21,63 @@ import { Inscription } from '../../../model/inscription';
   ]
 })
 export class InscriptionListComponent implements OnInit {
-
+  tu: string;
   movType: string = '';
 
-  displayedColumns: string[] = ['idAlmun', 'idCourse', 'registrationDate', 'idUser', 'actions'];
+  
+  displayedColumns: string[] =[]
   
   model: Model = {
     name: ''
   }
 
   dataSource:any;
+  courses:any;
+  alumns: any;
+  users: any;
   constructor(private coursesalumnsservices: CoursesAlumnsService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog) { 
+      this.tu = localStorage.getItem('tu')!;
+    }
 
   ngOnInit(): void {
+    if(this.tu === 'admin' || this.tu === 'user') {
+      this.displayedColumns = ['idAlmun', 'idCourse', 'registrationDate', 'idUser', 'actions'];
+    }else{
+      this.displayedColumns = ['idAlmun', 'idCourse', 'registrationDate', 'idUser'];
+    }
     this.getIncriptions();
+    this.getCourses();
+    this.getAlumns();
+    this.getUsers();
   }
 
-  
+  getCourses(){
+    this.coursesalumnsservices.getCourses()
+                              .subscribe( courses => {
+                                this.courses = courses;
+                              })
+  }
+
   getIncriptions(){
     this.coursesalumnsservices.getInscriptions()
                               .subscribe( inscriptions => {
                                 this.dataSource = new MatTableDataSource( inscriptions );
+                              })
+  }
+
+  getAlumns(){
+    this.coursesalumnsservices.getStudents().
+                              subscribe( alumns => {
+                                this.alumns = alumns;
+                              })
+  }
+
+  getUsers(){
+    this.coursesalumnsservices.getUsers()
+                              .subscribe( users => {
+                                this.users = users;
                               })
   }
 

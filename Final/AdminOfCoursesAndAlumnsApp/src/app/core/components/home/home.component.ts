@@ -13,13 +13,15 @@ import { AuthService       } from 'src/app/auth/services/auth.service';
 `]
 })
 export class HomeComponent implements OnInit {
-
+  tu: string;
   public get auth(){
     return this.authservice.auth;
   }
   
   constructor(private router:Router,
-              private authservice: AuthService) { }
+              private authservice: AuthService) {
+                this.tu = localStorage.getItem('tu')!;
+               }
 
   ngOnInit(): void {
   }

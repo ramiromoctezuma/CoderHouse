@@ -13,6 +13,7 @@ import { MatTableModule           } from "@angular/material/table";
 import { MatIconModule            } from "@angular/material/icon";
 import { MatCardModule            } from "@angular/material/card";
 import { MatListModule            } from "@angular/material/list";
+import { MatSelectModule } from '@angular/material/select';
 
 
 import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
@@ -31,7 +32,8 @@ import { MatOptionModule, MAT_DATE_LOCALE } from "@angular/material/core";
         MatListModule,
         MatTableModule,
         MatCardModule,
-        MatInputModule
+        MatInputModule,
+        MatSelectModule
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'es-MX' }

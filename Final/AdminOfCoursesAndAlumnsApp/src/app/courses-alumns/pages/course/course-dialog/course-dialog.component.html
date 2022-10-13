@@ -9,12 +9,12 @@
         <span *ngIf="validateField('name')">Campo obligatorio y mínimo 1 caracter.</span>
         <mat-form-field appearance="fill">
             <mat-label>Número de horas</mat-label>
-            <input formControlName = "hquantity" matInput>
+            <input formControlName = "hquantity" matInput type="number" min="1">
         </mat-form-field>
         <span *ngIf="validateField('hquantity')">Campo obligatorio.</span>
         <mat-form-field appearance="fill">
             <mat-label>Número de clases</mat-label>
-            <input formControlName = "cquantity" matInput>
+            <input formControlName = "cquantity" matInput type="number" min="1">
         </mat-form-field>
         <span *ngIf="validateField('cquantity')">Campo obligatorio.</span>
         <mat-form-field appearance="fill">

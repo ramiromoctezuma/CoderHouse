@@ -4,6 +4,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Student } from 'src/app/courses-alumns/model/student';
 import { CoursesAlumnsService } from '../../../../data/service/courses-alumns.service';
 
+interface genericModel {
+  value: string;
+  viewValue: string;
+}
+
+
 @Component({
   selector: 'app-student-edit-dialog',
   templateUrl: './student-edit-dialog.component.html',
@@ -13,10 +19,21 @@ export class StudentEditDialogComponent implements OnInit {
 
   movType: string = '';
 
+  alumns: genericModel[] = [
+    {value: '1', viewValue: 'Desarrollador'},
+    {value: '2', viewValue: 'IT'},
+    {value: '3', viewValue: 'Usuario Final'},
+  ];
+
+  genders: genericModel[] = [
+    {value: '0', viewValue: 'Hombre'},
+    {value: '1', viewValue: 'Mujer'},
+  ];
+
   formulario: FormGroup = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(2)]],
     lastName:  ['', [Validators.required, Validators.minLength(2)]],
-    profile:   ['', [Validators.required, Validators.minLength(2)]],
+    profile:   ['', []],
     gender:    ['', [Validators.required, Validators.minLength(1)]],
     id:        ['', []],
   });
@@ -33,7 +50,7 @@ export class StudentEditDialogComponent implements OnInit {
       this.formulario = fb.group({
         firstName: [data.name.firstName, [Validators.required, Validators.minLength(2)]],
         lastName:  [data.name.lastName,  [Validators.required, Validators.minLength(2)]],
-        profile:   [data.profile,        [Validators.required, Validators.minLength(2)]],
+        profile:   [data.profile,        []],
         gender:    [data.gender,         [Validators.required, Validators.minLength(1)]],
         id:        [data.id,             []]
       })

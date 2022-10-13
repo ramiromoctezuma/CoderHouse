@@ -21,7 +21,8 @@ import { Model                 } from 'src/app/courses-alumns/model/model.interf
 })
 
 export class CourseListComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'hquantity', 'cquantity', 'assignedtecher', 'actions'];
+  tu: string;
+  displayedColumns: string[] = [];
   model: Model = {
     name: ''
   }
@@ -30,10 +31,17 @@ export class CourseListComponent implements OnInit {
 
   constructor(private coursesalumnsservices: CoursesAlumnsService,
               private _snackBar: MatSnackBar,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog) { 
+                this.tu = localStorage.getItem('tu')!;
+              }
 
   ngOnInit(): void {
     this.getCourses();
+    if (this.tu === 'admin') {
+      this.displayedColumns = ['name', 'hquantity', 'cquantity', 'assignedtecher', 'actions'];
+    }else{
+      this.displayedColumns = ['name', 'hquantity', 'cquantity', 'assignedtecher'];
+    }
   }
 
   getCourses(){

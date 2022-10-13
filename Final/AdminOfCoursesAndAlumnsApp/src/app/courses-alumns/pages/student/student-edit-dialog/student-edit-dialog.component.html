@@ -14,12 +14,22 @@
         <span *ngIf="validateField('lastName')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Perfil</mat-label>
-            <input formControlName = "profile" matInput>
+                <mat-select formControlName="profile">
+                <mat-option *ngFor="let alumn of alumns" [value]="alumn.value">
+                    {{alumn.viewValue}}
+                </mat-option>
+            </mat-select>
+            <!-- <mat-label>Perfil</mat-label>
+            <input formControlName = "profile" matInput> -->
         </mat-form-field>
         <span *ngIf="validateField('profile')">Campo obligatorio y mínimo 2 caracteres.</span>
         <mat-form-field appearance="fill">
             <mat-label>Sexo</mat-label>
-            <input formControlName = "gender" matInput>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                    {{gender.viewValue}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <span *ngIf="validateField('gender')">Campo obligatorio y mínimo 2 caracteres.</span>
     </form>

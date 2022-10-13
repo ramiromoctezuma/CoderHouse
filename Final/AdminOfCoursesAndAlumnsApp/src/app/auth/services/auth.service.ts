@@ -46,11 +46,11 @@ export class AuthService {
                         isLoggedIn = true;
                         this._auth = userDB
                         localStorage.setItem('token', String(userDB.id))
+                        localStorage.setItem('tu', String(userDB.profile))
                         this.router.navigate(['/coursesalumns'])
                       }
                     });
                     if (isLoggedIn === false) {
-                      console.log("Error de inicio de sesión.")
                     }
                   })
     }

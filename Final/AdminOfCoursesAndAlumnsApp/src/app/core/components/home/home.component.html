@@ -9,14 +9,6 @@
             </button>
         </mat-toolbar>
         <mat-nav-list>
-            <a routerLink="userlist"
-               (click)="sidenav.toggle()"
-               mat-list-item>
-               <mat-icon mat-list-icon>person</mat-icon>
-                <span>Usuarios</span>
-            </a>
-        </mat-nav-list>
-        <mat-nav-list>
             <a routerLink="studentlist"
                (click)="sidenav.toggle()"
                mat-list-item>
@@ -38,6 +30,14 @@
                mat-list-item>
                <mat-icon  mat-list-icon>drive_file_rename_outline</mat-icon>
                 <span>Inscripciones</span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="tu==='admin'">
+            <a routerLink="userlist"
+               (click)="sidenav.toggle()"
+               mat-list-item>
+               <mat-icon mat-list-icon>person</mat-icon>
+                <span>Usuarios</span>
             </a>
         </mat-nav-list>
     </mat-sidenav>

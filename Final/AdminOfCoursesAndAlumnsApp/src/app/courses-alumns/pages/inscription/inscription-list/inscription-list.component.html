@@ -1,5 +1,5 @@
 <h1><mat-icon mat-list-icon>drive_file_rename_outline</mat-icon> Inscripciones</h1>
-<button mat-icon-button (click)="addInscription()"><mat-icon>add_circle_outline</mat-icon> Agregar</button>
+<button mat-icon-button (click)="addInscription()" *ngIf="tu==='admin' || tu==='user'"><mat-icon>add_circle_outline</mat-icon> Agregar</button>
 <hr>
 
 <mat-grid-list cols="1" *ngIf="!dataSource else divInscriptions">
@@ -13,13 +13,21 @@
             <table mat-table [dataSource]="dataSource">
                 <!-- Users Colum -->
                 <ng-container matColumnDef="idAlmun">
-                    <th mat-header-cell *matHeaderCellDef>Nombre</th>
-                    <td mat-cell *matCellDef="let element">{{ element.idAlmun }}</td>
+                    <th mat-header-cell *matHeaderCellDef>Nombre Alumno</th>
+                    <td mat-cell  *matCellDef="let element">
+                        <div *ngFor="let alumn of alumns">
+                            <span *ngIf="alumn.id == element.idAlmun">{{ alumn.name | names}}</span>
+                        </div>
+                    </td>
                 </ng-container>
                 <!-- Course Colum -->
-                <ng-container matColumnDef="idCourse">
+                <ng-container  matColumnDef="idCourse">
                     <th mat-header-cell *matHeaderCellDef>Curso</th>
-                    <td mat-cell *matCellDef="let element">{{ element.idCourse }}</td>
+                    <td mat-cell  *matCellDef="let element">
+                        <div *ngFor="let course of courses">
+                            <span *ngIf="course.idCourse == element.idCourse">{{ course.name }}</span>
+                        </div>
+                    </td>
                 </ng-container>
                 <!-- Date Colum -->
                 <ng-container matColumnDef="registrationDate">
@@ -29,10 +37,14 @@
                 <!-- Usuario Colum -->
                 <ng-container matColumnDef="idUser">
                     <th mat-header-cell *matHeaderCellDef>Usuario</th>
-                    <td mat-cell *matCellDef="let element">{{ element.idUser }}</td>
+                    <td mat-cell  *matCellDef="let element">
+                        <div *ngFor="let user of users">
+                            <span *ngIf="user.id == element.idUser">{{ user.name}}</span>
+                        </div>
+                    </td>
                 </ng-container>
                 <!-- Acciones Colum -->
-                <ng-container matColumnDef="actions">
+                <ng-container matColumnDef="actions" *ngIf="tu==='admin' || tu==='user'">
                     <th mat-header-cell *matHeaderCellDef>Acciones</th>
                     <td mat-cell *matCellDef="let element">
                         <button mat-icon-button (click)="edit(element)">
